@@ -3,7 +3,10 @@ module.exports = {
     name: 'dev',
     build: {
         debug: true,
-        minify: false,
+        minify: false
+    },
+    development: {
+        port: 8080,
         watch: true
     },
     test: {

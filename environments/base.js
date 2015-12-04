@@ -9,19 +9,21 @@ module.exports = {
     name: 'base',
     build: {
         debug: false,
-        minify: true,
-        watch: false
+        minify: true
     },
     development: {
         port: 8080,
+        watch: false
     },
     test: {
         port: 9000,
-        reporters: ['html', 'progress'],
-        browsers: ['Chrome'],
-        singleRun: true
+        reporter: 'spec'
+    },
+    coverage: {
+        report: ['text', 'html', 'text-summary']
     },
     paths: {
+        tests: path.join(ROOT_DIR, 'test'),
         input: {
             root: SRC_DIR,
             assets: path.join(SRC_DIR, 'assets'),

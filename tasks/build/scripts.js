@@ -7,7 +7,7 @@ module.exports = function factory($, env) {
     var opts = $.lodash.assign({}, $.watchify.args, customOpts);
     var b;
 
-    if (env.build.watch) {
+    if (env.development.watch) {
         b = $.watchify($.browserify(opts));
     } else {
         b = $.browserify(opts);

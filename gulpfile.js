@@ -15,7 +15,8 @@ var $ = require('gulp-load-plugins')({
         'vinyl-buffer',
         'glob',
         'lodash',
-        'less-plugin-*'
+        'less-plugin-*',
+        'mochify'
     ],
     replaceString: /^gulp(-|\.)/,
     rename: {
@@ -66,6 +67,24 @@ $.gulp.task('build', function task(done) {
 
 $.gulp.task('doc', function task(done) {
     return runSequence('clean:doc', 'build:doc', done);
+});
+
+$.gulp.task('test', function task(done) {
+    $.mochify(env.paths.tests + '/**/*.js', {
+                    reporter: 'spec',
+                })
+                .plugin('proxyquire-universal')
+                .plugin('mochify-istanbul', {
+                    report: 'html',
+                    dir: './test/core/coverage'
+                })
+                .on('error', function (err) {
+                    next(err);
+                })
+                .on('end', function () {
+                    next();
+                })
+                .bundle(); // bundle at the VERY end after listeners
 });
 
 $.gulp.task('default', function task(done) {

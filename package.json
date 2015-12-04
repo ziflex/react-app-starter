@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tim Voronov <ziflex@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta4",
@@ -35,6 +35,8 @@
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "^1.5.1",
     "lodash": "^3.10.1",
+    "mochify": "^2.14.2",
+    "mochify-istanbul": "^2.3.0",
     "run-sequence": "^1.1.5",
     "watchify": "^3.6.1"
   },

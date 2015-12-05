@@ -2,9 +2,12 @@
   "extends": "airbnb/base",
   "parser": "babel-eslint",
   "env": {
-    "browser": true
+    "browser": true,
+    "mocha": true
   },
-  "plugins": [],
+  "plugins": [
+    "mocha"
+  ],
   "rules": {
     "indent": [2, 4],
     "comma-dangle": 0,

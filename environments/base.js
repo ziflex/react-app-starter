@@ -17,13 +17,14 @@ module.exports = {
     },
     test: {
         port: 9000,
-        reporter: 'spec'
+        report: 'spec'
     },
     coverage: {
-        report: ['text', 'html', 'text-summary']
+        report: ['text', 'cobertura', 'json']
     },
     paths: {
         tests: path.join(ROOT_DIR, 'test'),
+        coverage: path.join(ROOT_DIR, 'coverage'),
         input: {
             root: SRC_DIR,
             assets: path.join(SRC_DIR, 'assets'),

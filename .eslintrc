@@ -1,12 +1,13 @@
 {
-  "extends": "airbnb/base",
+  "extends": "airbnb",
   "parser": "babel-eslint",
   "env": {
     "browser": true,
     "mocha": true
   },
   "plugins": [
-    "mocha"
+    "mocha",
+    "react"
   ],
   "rules": {
     "indent": [2, 4],

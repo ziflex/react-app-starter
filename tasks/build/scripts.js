@@ -22,7 +22,7 @@ module.exports = function factory($, env) {
             })
             .pipe($.vinylSourceStream('app.js'))
             .pipe($.vinylBuffer())
-            .pipe($.if(!env.build.minify, $.uglify()))
+            .pipe($.if(env.build.minify, $.uglify()))
             .pipe($.gulp.dest(env.paths.output.scripts));
     }
 

@@ -1,2 +1,2 @@
-# Project Build Boilerplate
-Starter for your project build system.
+# React App Starter
+Starter for your React app.

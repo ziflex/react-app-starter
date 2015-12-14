@@ -16,15 +16,16 @@ module.exports = {
         watch: false
     },
     test: {
-        port: 9000,
+        port: 9090,
         report: 'spec'
     },
     coverage: {
-        report: ['text', 'cobertura', 'json']
+        report: ['text', 'html', 'json']
     },
     paths: {
         tests: path.join(ROOT_DIR, 'test'),
         coverage: path.join(ROOT_DIR, 'coverage'),
+        doc: path.join(ROOT_DIR, 'doc'),
         input: {
             root: SRC_DIR,
             assets: path.join(SRC_DIR, 'assets'),
@@ -37,8 +38,7 @@ module.exports = {
             assets: path.join(DIST_DIR, 'assets'),
             scripts: path.join(DIST_DIR, 'scripts'),
             styles: path.join(DIST_DIR, 'styles'),
-            html: DIST_DIR,
-            docs: ROOT_DIR
+            html: DIST_DIR
         }
     }
 };

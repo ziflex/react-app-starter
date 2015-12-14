@@ -79,5 +79,5 @@ node_modules
 .settings
 
 dist
-
+doc
 coverage

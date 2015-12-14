@@ -2,13 +2,13 @@ import Symbol from 'es6-symbol';
 import DI from 'namespaces-js';
 import { createClass } from '../core/utils/object';
 import { requires } from '../core/utils/contracts';
-import HttpService from '../core/http/client';
+import HttpClient from '../core/http/client';
 
 const CONTAINER = Symbol('CONTAINER');
 
 /**
  * Represents an application.
- * @class
+ * @class Application
  */
 export default createClass({
     /**
@@ -20,7 +20,7 @@ export default createClass({
         this[CONTAINER] = new DI();
 
         this.register('constants').value('settings', settings);
-        this.register('core/services').service('http', HttpService);
+        this.register('core/services').service('http', HttpClient);
     },
 
     /**

@@ -6,9 +6,10 @@ import isFunction from 'lodash/lang/isFunction';
 const PREDEFINED = ['mixins', 'statics'];
 
 /**
-  * Helper function for setting up prototype chains for subclasses.
+  * Creates class.
+  * Possible to extend passed definition with mixins.
   * @param {Object | Function} definition - Class definition.
-  * @param {Array<Object>} mixins - Mixins.
+  * @return {Function} Constructor.
 */
 export function createClass(definition) {
     if (isFunction(definition)) {
@@ -24,7 +25,7 @@ export function createClass(definition) {
         };
     })(prototype.constructor || function DefaultConstructor() {});
 
-    Constructor = assign(Constructor, statics);
+    Constructor = assign(Constructor, omit(statics, ['constructor', 'prototype']));
     Constructor.prototype = assign(prototype, ...mixins);
 
     return Constructor;

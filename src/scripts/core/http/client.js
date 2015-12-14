@@ -19,6 +19,11 @@ export default createClass({
     mixins: [
         getEventsSourceMixin(EMITTER)
     ],
+
+    /**
+     * Creates new instance of HttpClient.
+     * @constructor
+     */
     constructor() {
         this[EMITTER] = new EventEmitter();
     },

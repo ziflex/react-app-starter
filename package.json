@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "test": "gulp test:run",
+    "start": "gulp"
   },
   "author": "Tim Voronov <ziflex@gmail.com>",
   "license": "MIT",
@@ -22,6 +25,7 @@
     "history": "^1.13.1",
     "immutable": "^3.7.5",
     "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "namespaces-js": "^0.1.1",
     "react": "^0.14.3",
     "react-bootstrap": "^0.28.1",
@@ -41,8 +45,7 @@
     "browserify": "^12.0.1",
     "chai": "^3.4.1",
     "del": "^2.1.0",
-    "env-manager": "^0.2.1",
-    "envify": "^3.4.0",
+    "env-manager": "^0.2.2",
     "esdoc": "^0.4.3",
     "eslint": "^1.10.2",
     "eslint-config-airbnb": "^1.0.2",
@@ -67,7 +70,7 @@
     "less-plugin-clean-css": "^1.5.1",
     "lodash": "^3.10.1",
     "mocha": "^2.3.4",
-    "mochify": "^2.14.2",
+    "mochify": "^2.14.3",
     "mochify-istanbul": "^2.3.0",
     "run-sequence": "^1.1.5",
     "sinon": "^1.17.2",
@@ -80,9 +83,6 @@
     "transform": [
       [
         "babelify"
-      ],
-      [
-        "envify"
       ]
     ]
   }

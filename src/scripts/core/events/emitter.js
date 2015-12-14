@@ -6,6 +6,10 @@ import { execute } from '../utils/async';
 
 const EMITTER = Symbol('EMITTER');
 
+/**
+ * Represents async event emitter.
+ * @class EventEmitter
+ */
 export default createClass({
     mixins: [
         getEventsSourceMixin(EMITTER)

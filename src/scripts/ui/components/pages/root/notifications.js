@@ -14,26 +14,19 @@ export default React.createClass({
     ],
     componentDidMount() {
         this._notificationContainer = this.refs.notificationContainer;
-        const notificationStore = this.getStore('notifications');
-        notificationStore.listen(this._onChange);
-        notificationStore.getState().forEach((n) => {
-            this._addNotification(n);
-        });
+    },
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.notifications) {
+            nextProps.notifications.forEach(bind(this._addNotification, this));
+        }
     },
     _addNotification(notification) {
         if (indexOf(this._visibleNotifications, notification.id) < 0) {
-            this._notificationContainer.addNotification(merge({}, notification.toJS(), {
+            this._notificationContainer.addNotification(merge(notification.toJS(), {
                 onRemove: bind(this._dismiss, this, notification.id)
             }));
             this._visibleNotifications.push(notification.id);
         }
-    },
-    _onChange() {
-        const notifications = this.getStore('notifications').getState();
-
-        notifications.forEach((n) => {
-            this._addNotification(n);
-        });
     },
     _dismiss(id) {
         this._visibleNotifications = this._visibleNotifications.slice(indexOf(this._visibleNotifications, id), 1);

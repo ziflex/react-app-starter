@@ -1,4 +1,9 @@
-export default function mixin(symbolOrKey) {
+/**
+ * Extends an object with functions that allow to subscribe to events.
+ * @param {Symbol | String} symbolOrKey - Symbol or key in order to get inner event emitter.
+ * @return {Object} Mixin.
+ */
+export default function EventsSourceMixin(symbolOrKey) {
     return {
         on(event, handler) {
             this[symbolOrKey].on(event, handler);

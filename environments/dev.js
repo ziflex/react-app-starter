@@ -6,7 +6,6 @@ module.exports = {
         minify: false
     },
     development: {
-        port: 8080,
         watch: true
     },
     test: {

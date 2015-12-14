@@ -6,15 +6,19 @@ module.exports = function factory($, env, extraOptions) {
             reporter: env.test.report || 'spec',
             watch: params.watch || false,
             debug: params.debug || false,
+            cover: params.cover || false,
             recursive: true,
             port: env.test.port
         };
 
-        $.mochify(env.paths.tests + '/unit/**/*.js', options)
+        var units = env.paths.tests + '/**/*.js';
+
+        $.mochify(units, options)
             .transform('babelify')
             .plugin('mochify-istanbul', {
                 // Plugin options
-                intrumenter: 'babel-istanbul',
+                instrumenter: 'babel-istanbul',
+                exclude: [units, '**/node_modules/**/*'],
                 // Reporter options
                 report: env.coverage.report,
                 dir: env.paths.coverage

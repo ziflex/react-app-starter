@@ -40,15 +40,11 @@ export default class ApplicationUI extends Alt {
         return super.createStore(immutableUtil(constructor), ...args);
     }
 
-    resolve(name) {
-        return this[APPLICATION].resolve(name);
-    }
-
     getActions(name) {
-        return this.resolve(`${ACTIONS_NAMESPACE}/${name}`);
+        return this[APPLICATION].resolve(`${ACTIONS_NAMESPACE}/${name}`);
     }
 
     getStore(name) {
-        return this.resolve(`${STORES_NAMESPACE}/${name}`);
+        return this[APPLICATION].resolve(`${STORES_NAMESPACE}/${name}`);
     }
 }

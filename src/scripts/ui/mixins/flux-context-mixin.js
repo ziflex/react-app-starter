@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Allows components to receive Alt instance via context.
+ */
 export default {
     contextTypes: {
         flux: React.PropTypes.object.isRequired
@@ -12,8 +15,5 @@ export default {
     },
     getActions(name) {
         return this.getApp().getActions(name);
-    },
-    resolve(name) {
-        return this.getApp().resolve(name);
     }
 };

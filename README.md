@@ -18,7 +18,7 @@ Starter for your React app.
 ```
 
 ## License
-The MIT License (MIT)
+The MIT License (MIT)    
 Copyright (C) 2015 Tim Voronov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

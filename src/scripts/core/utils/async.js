@@ -9,7 +9,7 @@ import reduce from 'lodash/collection/reduce';
  */
 export function execute(task, timeout = 0) {
     return new Promise((resolve, reject) => {
-        setTimeout(bind((t)=> {
+        setTimeout(bind(function executeTask(t) {
             try {
                 resolve(t());
             } catch (ex) {

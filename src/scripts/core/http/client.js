@@ -74,17 +74,17 @@ export default createClass({
             }
 
             const id = uuid.v4();
-            this[EMITTER].emit(HttpEvents.START, {id});
+            this[EMITTER].emit(HttpEvents.START, { id });
 
             request.end((error, response) => {
-                this[EMITTER].emit(HttpEvents.STOP, {id});
+                this[EMITTER].emit(HttpEvents.STOP, { id });
 
                 if (!error) {
-                    this[EMITTER].emit(HttpEvents.SUCCESS, {id});
+                    this[EMITTER].emit(HttpEvents.SUCCESS, { id });
                     return resolve(response);
                 }
 
-                this[EMITTER].emit(HttpEvents.ERROR, {id, error});
+                this[EMITTER].emit(HttpEvents.ERROR, { id, error });
                 return reject(error);
             });
         });

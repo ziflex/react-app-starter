@@ -21,7 +21,7 @@ export default React.createClass({
                     {this.props.children}
                 </div>
                 <div>
-                    <AltContainer stores={{ notifications: this.getStore('notifications')}}>
+                    <AltContainer stores={{ notifications: this.getStore('notifications') }}>
                         <Notifications />
                    </AltContainer>
                </div>

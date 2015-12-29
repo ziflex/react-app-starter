@@ -22,10 +22,10 @@ const mapSeverityLevelToNotificationLevel = (severityLevel) => {
  * @param {WebError|Object} value A WebError object or custom notification temporary object
  * @returns {Notification}
  */
-export default function create({title, message, level}) {
+export default function create({ title, message, level }) {
     return new Notification({
-        title: title,
-        message: message,
+        title,
+        message,
         id: uuid.v4(),
         level: mapSeverityLevelToNotificationLevel(level)
     });

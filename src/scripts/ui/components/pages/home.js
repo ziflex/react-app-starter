@@ -1,5 +1,5 @@
 import React from 'react';
-import {Jumbotron, ButtonToolbar, Button} from 'react-bootstrap';
+import { Jumbotron, ButtonToolbar, Button } from 'react-bootstrap';
 import FluxContextMixin from '../../mixins/flux-context-mixin';
 import NotificationLevels from '../../enums/notification-levels';
 
@@ -19,22 +19,26 @@ export default React.createClass({
                 <ButtonToolbar>
                     <Button
                         bsStyle="info"
-                        onClick={this._onClick.bind(this, NotificationLevels.INFO)}>
+                        onClick={this._onClick.bind(this, NotificationLevels.INFO)}
+                    >
                         Click me
                     </Button>
                     <Button
                         bsStyle="success"
-                        onClick={this._onClick.bind(this, NotificationLevels.SUCCESS)}>
+                        onClick={this._onClick.bind(this, NotificationLevels.SUCCESS)}
+                    >
                         Click me
                     </Button>
                     <Button
                         bsStyle="warning"
-                        onClick={this._onClick.bind(this, NotificationLevels.WARNING)}>
+                        onClick={this._onClick.bind(this, NotificationLevels.WARNING)}
+                    >
                         Click me
                     </Button>
                     <Button
                         bsStyle="danger"
-                        onClick={this._onClick.bind(this, NotificationLevels.ERROR)}>
+                        onClick={this._onClick.bind(this, NotificationLevels.ERROR)}
+                    >
                         Click me
                     </Button>
                 </ButtonToolbar>

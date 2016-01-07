@@ -1,5 +1,5 @@
 import Symbol from 'es6-symbol';
-import DI from 'namespaces-js';
+import Container from 'namespaces-js';
 import { createClass } from '../core/utils/object';
 import { requires } from '../core/utils/contracts';
 import HttpClient from '../core/http/client';
@@ -17,7 +17,7 @@ export default createClass({
      * @constructor
      */
     constructor(settings = {}) {
-        this[CONTAINER] = new DI();
+        this[CONTAINER] = new Container();
 
         this.register('constants').value('settings', settings);
         this.register('core/services').service('http', HttpClient);
@@ -29,7 +29,7 @@ export default createClass({
      * @returns {any} Any type.
      */
     resolve(path) {
-        requires('Path', path);
+        requires('path', path);
         return this[CONTAINER].resolve(path);
     },
 
@@ -39,7 +39,7 @@ export default createClass({
      * @returns {any} Module registry.
      */
     register(namespace) {
-        requires('Namespace', namespace);
-        return this[CONTAINER].register(namespace);
+        requires('namespace', namespace);
+        return this[CONTAINER].namespace(namespace);
     }
 });

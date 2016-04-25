@@ -1,6 +1,5 @@
 import Promise from 'bluebird';
-import bind from 'lodash/function/bind';
-import reduce from 'lodash/collection/reduce';
+import reduce from 'lodash/reduce';
 
 /**
  * Asynchronously executes passed task.
@@ -9,13 +8,13 @@ import reduce from 'lodash/collection/reduce';
  */
 export function execute(task, timeout = 0) {
     return new Promise((resolve, reject) => {
-        setTimeout(bind(function executeTask(t) {
+        setTimeout(() => {
             try {
-                resolve(t());
+                resolve(task());
             } catch (ex) {
                 reject(ex);
             }
-        }, this, task), timeout);
+        }, timeout);
     });
 }
 

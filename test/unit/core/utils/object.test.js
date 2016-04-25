@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import { createClass } from '../../../../src/scripts/core/utils/object';
 
-describe(__dirname + '/object', () => {
+describe('core/utils/object', () => {
     it('should ignore functions', () => {
         const Constructor = function Constructor() {};
         const Class = createClass(Constructor);

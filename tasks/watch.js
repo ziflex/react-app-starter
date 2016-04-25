@@ -1,5 +1,4 @@
-/*eslint-disable */
-module.exports = function factory($, env) {
+export default function factory($, env) {
     return function task(done) {
         if (env.development.watch) {
             $.gulp.watch(env.paths.input.styles + '/**/*.less', ['build:styles']);
@@ -8,5 +7,4 @@ module.exports = function factory($, env) {
             done();
         }
     };
-};
-/*eslint-enable */
+}

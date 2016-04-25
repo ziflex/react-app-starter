@@ -1,28 +1,55 @@
 /* eslint-disable no-unused-expressions */
 import chai from 'chai';
-import forEach from 'lodash/collection/forEach';
+import _ from 'lodash';
 
-export function expect({description, values, test, check}) {
-    forEach(values, (v) => {
-        it(`${description} ${v}`, () => {
-            chai.expect(check(test(v))).to.be.true;
+const DEFAULT_CHECK = result => chai.expect(result).to.be.true;
+
+function getDescription(description = '', value) {
+    return _.isFunction(description) ? description(value) : `${description} ${_.toString(value)}`;
+}
+
+export function expect({ description, values, test, check = DEFAULT_CHECK, beforeEach, afterEach }) {
+    _.forEach(values, (v) => {
+        it(getDescription(description, v), () => {
+            if (beforeEach) {
+                beforeEach();
+            }
+
+            check(test(v), v);
+
+            if (afterEach) {
+                afterEach();
+            }
         });
     });
 }
 
-export function expectAsync({description, values, test, check}) {
-    forEach(values, (v) => {
-        it(`${description} ${v}`, (done) => {
-            const quantity = values.length;
-            let executed = 0;
+export function expectAsync({ description, values, test, check = DEFAULT_CHECK, beforeEach, afterEach }) {
+    _.forEach(values, (v) => {
+        it(getDescription(description, v), (done) => {
+            if (beforeEach) {
+                beforeEach();
+            }
 
-            test(v, (result) => {
-                chai.expect(check(result)).to.be.true;
-                executed += 1;
+            test(v, (err, result) => {
+                if (err) {
+                    console.error(err.stack);
 
-                if (quantity === executed) {
-                    done();
+                    if (afterEach) {
+                        afterEach();
+                    }
+
+                    chai.expect(err, 'no errors').to.not.exist;
+                    return;
                 }
+
+                check(result, v);
+
+                if (afterEach) {
+                    afterEach();
+                }
+
+                done();
             });
         });
     });

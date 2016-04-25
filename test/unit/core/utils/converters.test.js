@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from '../../../utils/dynamic-expect';
 import { toString, toDate, toNumber, toMoment } from '../../../../src/scripts/core/utils/converters';
-import isString from 'lodash/lang/isString';
-import isNull from 'lodash/lang/isNull';
-import isDate from 'lodash/lang/isDate';
-import isNumber from 'lodash/lang/isNumber';
+import isString from 'lodash/isString';
+import isNull from 'lodash/isNull';
+import isDate from 'lodash/isDate';
+import isNumber from 'lodash/isNumber';
 import moment from 'moment';
 
 const SUCCESS_DESCRIPTION = 'should successfully process convertable values';
 const FAILURE_DESCRIPTION = 'should return null for non-convertable values';
 
-describe(__dirname + '/converters', () => {
+describe('core/utils/converters', () => {
     describe('.toString', () => {
         expect({
             description: SUCCESS_DESCRIPTION,

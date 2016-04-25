@@ -1,7 +1,6 @@
-/*eslint-disable */
 process.env.NODE_ENV = 'production';
 
-module.exports = {
+export default {
     name: 'prod',
     build: {
         debug: false,
@@ -11,4 +10,3 @@ module.exports = {
         singleRun: true
     }
 };
-/*eslint-enable */

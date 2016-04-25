@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import { assert, requires } from '../../../../src/scripts/core/utils/contracts';
 
-describe(__dirname + '/contracts', () => {
+describe('core/utils/contracts', () => {
     describe('.assert', () => {
         it('should not when condition is true', () => {
             expect(() => {

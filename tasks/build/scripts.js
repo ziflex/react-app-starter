@@ -1,11 +1,12 @@
-/*eslint-disable */
-module.exports = function factory($, env) {
-    var customOpts = {
-        entries: [env.paths.input.scripts + '/boot.js'],
+import path from 'path';
+
+export default function factory($, env) {
+    const customOpts = {
+        entries: [path.join(env.paths.input.scripts, '/boot.js')],
         debug: env.build.debug
     };
-    var opts = $.lodash.assign({}, $.watchify.args, customOpts);
-    var b;
+    const opts = Object.assign({}, $.watchify.args, customOpts);
+    let b;
 
     if (env.development.watch) {
         b = $.watchify($.browserify(opts));
@@ -16,7 +17,7 @@ module.exports = function factory($, env) {
     function bundle() {
         return b
             .bundle()
-            .on('error', function(err) {
+            .on('error', (err) => {
                 $.util.log($.util.colors.red(err.toString()));
                 process.exit(1);
             })
@@ -30,5 +31,4 @@ module.exports = function factory($, env) {
     b.on('log', $.util.log); // output build logs to terminal
 
     return bundle;
-};
-/*eslint-enable */
+}

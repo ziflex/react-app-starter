@@ -1,8 +1,8 @@
-import isUndefined from 'lodash/lang/isUndefined';
-import isNull from 'lodash/lang/isNull';
+import isNil from 'lodash/isNil';
 
  /**
-  * Checks for a condition; if the condition is false, follows the escalation policy set for the analyzer.
+  * Checks for a condition; if the condition is false,
+  * follows the escalation policy set for the analyzer.
   * @param {string} message - A message to display if the condition is not met..
   * @param {boolean} condition - The condition to check.
   */
@@ -19,5 +19,5 @@ export function assert(message, condition) {
   * @param {any} value - The conditional expression to test.
   */
 export function requires(name, value) {
-    assert(`${name} is required!`, !isUndefined(value) && !isNull(value));
+    assert(`${name} is required!`, !isNil(value));
 }

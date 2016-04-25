@@ -1,8 +1,7 @@
-/*eslint-disable */
-module.exports = function factory($, env) {
+export default function factory($, env) {
     return function task() {
-        var target = $.gulp.src(env.paths.input.html + '/index.html');
-        var sources = $.gulp.src([
+        const target = $.gulp.src(env.paths.input.html + '/index.html');
+        const sources = $.gulp.src([
             env.paths.output.scripts + '/**/*.js',
             env.paths.output.styles + '/**/*.css'
         ], { read: false });
@@ -14,5 +13,4 @@ module.exports = function factory($, env) {
             }))
             .pipe($.gulp.dest(env.paths.output.html));
     };
-};
-/*eslint-enable */
+}

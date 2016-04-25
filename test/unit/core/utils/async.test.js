@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import sinon from 'sinon';
-import bind from 'lodash/function/bind';
+import bind from 'lodash/bind';
 import { execute, series } from '../../../../src/scripts/core/utils/async';
 
-describe(__dirname + '/async', () => {
+describe('core/utils/async', () => {
     describe('.execute', () => {
         it('should execute asynchronously', (done) => {
             const callback = sinon.spy();

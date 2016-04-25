@@ -1,7 +1,8 @@
-import omit from 'lodash/object/omit';
-import assign from 'lodash/object/assign';
-import get from 'lodash/object/get';
-import isFunction from 'lodash/lang/isFunction';
+/* eslint-disable lodash/prefer-noop, prefer-arrow-callback */
+import omit from 'lodash/omit';
+import assign from 'lodash/assign';
+import get from 'lodash/get';
+import isFunction from 'lodash/isFunction';
 
 const PREDEFINED = ['mixins', 'statics'];
 
@@ -19,11 +20,11 @@ export function createClass(definition) {
     const mixins = get(definition, 'mixins', []);
     const statics = get(definition, 'statics', {});
     const prototype = omit(definition, PREDEFINED);
-    let Constructor = (function getConstructor(constructor) {
+    let Constructor = ((function getConstructor(constructor) {
         return function Surrogate(...args) {
             constructor.apply(this, args);
         };
-    })(prototype.constructor || function DefaultConstructor() {});
+    })(prototype.constructor || function DefaultConstructor() {}));
 
     Constructor = assign(Constructor, omit(statics, ['constructor', 'prototype']));
     Constructor.prototype = assign(prototype, ...mixins);

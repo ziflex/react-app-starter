@@ -1,11 +1,10 @@
-/*eslint-disable */
-var path = require('path');
+import path from 'path';
 
-var ROOT_DIR = path.resolve(__dirname, '..');
-var SRC_DIR = path.join(ROOT_DIR, 'src');
-var DIST_DIR = path.join(ROOT_DIR, 'dist');
+const ROOT_DIR = path.resolve(__dirname, '..');
+const SRC_DIR = path.join(ROOT_DIR, 'src');
+const DIST_DIR = path.join(ROOT_DIR, 'dist');
 
-module.exports = {
+export default {
     name: 'base',
     build: {
         debug: false,
@@ -16,7 +15,7 @@ module.exports = {
         watch: false
     },
     test: {
-        port: 9090,
+        port: 9000,
         report: 'spec'
     },
     coverage: {
@@ -42,4 +41,3 @@ module.exports = {
         }
     }
 };
-/*eslint-enable */

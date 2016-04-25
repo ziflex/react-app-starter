@@ -1,13 +1,13 @@
 import moment from 'moment';
-import isUndefined from 'lodash/lang/isUndefined';
-import isNull from 'lodash/lang/isNull';
-import isString from 'lodash/lang/isString';
-import isNumber from 'lodash/lang/isNumber';
-import isArray from 'lodash/lang/isArray';
-import isFunction from 'lodash/lang/isFunction';
-import isObject from 'lodash/lang/isObject';
-import isDate from 'lodash/lang/isDate';
-import map from 'lodash/collection/map';
+import isUndefined from 'lodash/isUndefined';
+import isNull from 'lodash/isNull';
+import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
+import isArray from 'lodash/isArray';
+import isFunction from 'lodash/isFunction';
+import isObject from 'lodash/isObject';
+import isDate from 'lodash/isDate';
+import map from 'lodash/map';
 
 /**
  * Converts passed value to string.

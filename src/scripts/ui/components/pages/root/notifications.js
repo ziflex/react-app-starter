@@ -1,8 +1,9 @@
 import React from 'react';
 import Notification from 'react-notification-system';
-import bind from 'lodash/function/bind';
-import indexOf from 'lodash/array/indexOf';
-import merge from 'lodash/object/merge';
+import bind from 'lodash/bind';
+import indexOf from 'lodash/indexOf';
+import merge from 'lodash/merge';
+import slice from 'lodash/slice';
 import FluxContextMixin from '../../../mixins/flux-context-mixin';
 
 export default React.createClass({
@@ -29,7 +30,11 @@ export default React.createClass({
         }
     },
     _dismiss(id) {
-        this._visibleNotifications = this._visibleNotifications.slice(indexOf(this._visibleNotifications, id), 1);
+        this._visibleNotifications = slice(
+            this._visibleNotifications,
+            indexOf(this._visibleNotifications, id),
+            1
+        );
         this.getActions('notifications').dismiss(id);
     },
     _notificationContainer: null,

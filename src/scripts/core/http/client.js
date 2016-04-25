@@ -1,8 +1,8 @@
 import superagent from 'superagent';
 import Promise from 'bluebird';
 import Symbol from 'es6-symbol';
-import isEmpty from 'lodash/lang/isEmpty';
-import forEach from 'lodash/collection/forEach';
+import isEmpty from 'lodash/isEmpty';
+import forEach from 'lodash/forEach';
 import uuid from 'uuid';
 import EventEmitter from '../events/emitter';
 import { createClass } from '../utils/object';

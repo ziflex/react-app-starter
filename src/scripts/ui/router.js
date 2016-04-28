@@ -1,6 +1,5 @@
 import React from 'react';
-import AltRouter from 'alt-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { Router, browserHistory } from 'react-router';
 import ApplicationUI from './application-ui';
 import routes from './routes';
 
@@ -18,6 +17,6 @@ export default React.createClass({
     },
 
     render() {
-        return <AltRouter history={createBrowserHistory()} routes={routes} />;
+        return <Router history={browserHistory} routes={routes} />;
     }
 });

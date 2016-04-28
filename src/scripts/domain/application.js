@@ -4,6 +4,10 @@ import { createClass } from '../core/utils/object';
 import { requires } from '../core/utils/contracts';
 import HttpClient from '../core/http/client';
 
+const NAMESPACES = Container.map({
+    constants: 'constants',
+    core: 'core'
+});
 const CONTAINER = Symbol('CONTAINER');
 
 /**
@@ -19,8 +23,8 @@ export default createClass({
     constructor(settings = {}) {
         this[CONTAINER] = new Container();
 
-        this.register('constants').value('settings', settings);
-        this.register('core/services').service('http', HttpClient);
+        this.register(NAMESPACES.constants()).value('settings', settings);
+        this.register(NAMESPACES.core()).service('http', HttpClient);
     },
 
     /**

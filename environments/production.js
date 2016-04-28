@@ -1,7 +1,9 @@
-process.env.NODE_ENV = 'production';
+import _ from 'lodash';
+
+_.set(process, 'env.NODE_ENV', 'production');
 
 export default {
-    name: 'prod',
+    name: 'production',
     build: {
         debug: false,
         minify: true

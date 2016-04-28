@@ -21,7 +21,7 @@ export default function factory($, env) {
                 $.util.log($.util.colors.red(err.toString()));
                 process.exit(1);
             })
-            .pipe($.vinylSourceStream('app.js'))
+            .pipe($.vinylSourceStream('bundle.js'))
             .pipe($.vinylBuffer())
             .pipe($.if(env.build.minify, $.uglify()))
             .pipe($.gulp.dest(env.paths.output.scripts));

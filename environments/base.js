@@ -22,6 +22,7 @@ export default {
         report: ['text', 'html', 'json']
     },
     paths: {
+        root: ROOT_DIR,
         tests: path.join(ROOT_DIR, 'test'),
         coverage: path.join(ROOT_DIR, 'coverage'),
         doc: path.join(ROOT_DIR, 'doc'),
@@ -29,7 +30,7 @@ export default {
             root: SRC_DIR,
             assets: path.join(SRC_DIR, 'assets'),
             scripts: path.join(SRC_DIR, 'scripts'),
-            styles: path.join(SRC_DIR, 'styles'),
+            styles: path.join(ROOT_DIR, 'node_modules/bootstrap/dist/css/bootstrap.css'),
             html: SRC_DIR
         },
         output: {

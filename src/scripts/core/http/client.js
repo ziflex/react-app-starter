@@ -39,16 +39,18 @@ export default createClass({
      * @returns {Promise}
      */
     execute(options = {}) {
-        return new Promise((resolve, reject) => {
+        return Promise.fromCallback((done) => {
             const methodType = (options.method === 'DELETE' ? 'DEL' : (options.method || '')).toLowerCase();
             const method = superagent[methodType];
 
             if (!method) {
-                reject(new Error(`Unsupported http method: ${options.method}`));
+                done(new Error(`Unsupported http method: ${options.method}`));
+                return;
             }
 
             if (isEmpty(options.url)) {
-                reject(new Error('Empty url'));
+                done(new Error('Empty url'));
+                return;
             }
 
             const request = method.call(superagent, options.url);
@@ -81,11 +83,11 @@ export default createClass({
 
                 if (!error) {
                     this[EMITTER].emit(HttpEvents.SUCCESS, { id });
-                    return resolve(response);
+                    return done(null, response);
                 }
 
                 this[EMITTER].emit(HttpEvents.ERROR, { id, error });
-                return reject(error);
+                return done(error);
             });
         });
     }

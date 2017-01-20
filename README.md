@@ -5,6 +5,14 @@ Starter for your React app.
 
 ```sh
 
+    yarn install
+
+```
+
+or
+
+```sh
+
     npm install
 
 ```

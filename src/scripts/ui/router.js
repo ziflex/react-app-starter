@@ -1,22 +1,37 @@
-import React from 'react';
-import { Router, browserHistory } from 'react-router';
-import ApplicationUI from './application-ui';
-import routes from './routes';
+import composeClass from 'compose-class';
+import Symbol from 'es6-symbol';
+import { requires } from '../infrastructure/utils/contracts';
 
-const app = new ApplicationUI();
+const FIELDS = {
+    logger: Symbol('logger'),
+    engine: Symbol('engine')
+};
 
-export default React.createClass({
-    childContextTypes: {
-        flux: React.PropTypes.object.isRequired
+const Router = composeClass({
+    consturctor(params) {
+        requires('params', params);
+        requires('params.logger', params.logger);
+        requires('params.engine', params.engine);
+
+        this[FIELDS.logger] = params.logger;
+        this[FIELDS.engine] = params.engine;
     },
 
-    getChildContext() {
-        return {
-            flux: app
-        };
+    redirect(path) {
+        requires('path', path);
+
+        this[FIELDS.engine].push(path);
+
+        return this;
     },
 
-    render() {
-        return <Router history={browserHistory} routes={routes} />;
+    subscribe(handler) {
+        requires('handler', handler);
+
+        return this[FIELDS.engine].listen(handler);
     }
 });
+
+export default function create(...args) {
+    return new Router(...args);
+}

@@ -2,7 +2,7 @@ import path from 'path';
 
 export default function factory($, env) {
     const customOpts = {
-        entries: [path.join(env.paths.input.scripts, '/boot.js')],
+        entries: [path.join(env.paths.input.scripts, '/index.js')],
         debug: env.build.debug
     };
     const opts = Object.assign({}, $.watchify.args, customOpts);

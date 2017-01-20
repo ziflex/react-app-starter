@@ -6,7 +6,10 @@ import Notifications from './root/notifications';
 
 export default React.createClass({
     propTypes: {
-        children: React.PropTypes.any
+        children: React.PropTypes.oneOfType([
+            React.PropTypes.element,
+            React.PropTypes.arrayOf(React.PropTypes.element)
+        ]).isRequired
     },
     mixins: [
         FluxContextMixin
@@ -21,10 +24,13 @@ export default React.createClass({
                     {this.props.children}
                 </div>
                 <div>
-                    <AltContainer stores={{ notifications: this.getStore('notifications') }}>
+                    <AltContainer
+                        stores={{ notifications: this.getStore('notifications') }}
+                        actions={{ actions: this.getActions('notifications') }}
+                    >
                         <Notifications />
-                   </AltContainer>
-               </div>
+                    </AltContainer>
+                </div>
             </div>
         );
     }

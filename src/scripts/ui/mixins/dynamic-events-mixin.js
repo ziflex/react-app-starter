@@ -3,7 +3,7 @@ import isFunction from 'lodash/isFunction';
 import {
     requires,
     assert
-} from '../../core/utils/contracts';
+} from '../../infrastructure/utils/contracts';
 
 export default {
     emit(eventName, ...initialArgs) {

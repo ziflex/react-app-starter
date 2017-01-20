@@ -18,12 +18,16 @@
   "rules": {
     "indent": [2, 4],
     "comma-dangle": 0,
+    "no-underscore-dangle": 0,
     "id-length": 0,
     "max-len": [2, 110],
     "new-cap": 0,
     "arrow-body-style": 0,
     "react/prefer-es6-class": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-indent": [2, 4],
     "react/jsx-indent-props": [2, 4],
+    "react/forbid-prop-types": 0,
     "lodash/prefer-lodash-method": 0
   }
 }

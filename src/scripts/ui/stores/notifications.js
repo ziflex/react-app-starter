@@ -1,8 +1,8 @@
 import { Map } from 'immutable';
-import { createClass } from '../../core/utils/object';
+import composeClass from 'compose-class';
 import Notification from '../models/notification';
 
-export default createClass({
+export default composeClass({
     constructor(notificationActions) {
         this.bindActions(notificationActions);
 

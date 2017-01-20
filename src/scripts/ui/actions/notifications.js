@@ -1,10 +1,10 @@
-import { createClass } from '../../core/utils/object';
+import composeClass from 'compose-class';
 
 /**
  * Represents a notifications actions.
  * @class NotificationsActions
  */
-export default createClass({
+export default composeClass({
     /**
      * Show notification.
      * @param {String} title - Notification title.

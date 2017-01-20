@@ -1,23 +1,25 @@
+import composeClass from 'compose-class';
 import superagent from 'superagent';
 import Promise from 'bluebird';
 import Symbol from 'es6-symbol';
 import isEmpty from 'lodash/isEmpty';
 import forEach from 'lodash/forEach';
 import uuid from 'uuid';
-import EventEmitter from '../events/emitter';
-import { createClass } from '../utils/object';
-import getEventsSourceMixin from '../mixins/events-source';
+import EventEmitter from 'eventemitter3';
+import ObservableMixin from 'observable-mixin';
 import HttpEvents from './events';
 
-const EMITTER = Symbol('EMITTER');
+const FIELDS = {
+    emitter: Symbol('emitter')
+};
 
 /**
  * Represents low-lever http service for communication with external services via AJAX.
  * @class
  */
-export default createClass({
+const HttpClient = composeClass({
     mixins: [
-        getEventsSourceMixin(EMITTER)
+        ObservableMixin(FIELDS.emitter)
     ],
 
     /**
@@ -25,7 +27,7 @@ export default createClass({
      * @constructor
      */
     constructor() {
-        this[EMITTER] = new EventEmitter();
+        this[FIELDS.emitter] = new EventEmitter();
     },
 
     /**
@@ -76,19 +78,24 @@ export default createClass({
             }
 
             const id = uuid.v4();
-            this[EMITTER].emit(HttpEvents.START, { id });
+            this[FIELDS.emitter].emit(HttpEvents.START, { id });
 
             request.end((error, response) => {
-                this[EMITTER].emit(HttpEvents.STOP, { id });
+                this[FIELDS.emitter].emit(HttpEvents.STOP, { id });
 
                 if (!error) {
-                    this[EMITTER].emit(HttpEvents.SUCCESS, { id });
+                    this[FIELDS.emitter].emit(HttpEvents.SUCCESS, { id });
                     return done(null, response);
                 }
 
-                this[EMITTER].emit(HttpEvents.ERROR, { id, error });
+                this[FIELDS.emitter].emit(HttpEvents.ERROR, { id, error });
+
                 return done(error);
             });
         });
     }
 });
+
+export default function create(...args) {
+    return new HttpClient(...args);
+}

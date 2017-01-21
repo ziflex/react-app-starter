@@ -5,7 +5,7 @@ Starter for your React app.
 
 ```sh
 
-    yarn install
+yarn install
 
 ```
 
@@ -13,7 +13,7 @@ or
 
 ```sh
 
-    npm install
+npm install
 
 ```
 
@@ -21,9 +21,26 @@ or
 
 ```sh
 
-    gulp
+gulp
 
 ```
+
+## Build for production
+
+```sh
+
+gulp build --env production
+
+```
+
+
+# Core libs
+
+* [React](https://facebook.github.io/react/)
+* [React Router](https://github.com/ReactTraining/react-router)
+* [Alt](http://alt.js.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+...etc
 
 ## License
 The MIT License (MIT)    

@@ -30,13 +30,17 @@ export default {
             root: SRC_DIR,
             assets: path.join(SRC_DIR, 'assets'),
             scripts: path.join(SRC_DIR, 'scripts'),
-            styles: path.join(ROOT_DIR, 'node_modules/bootstrap/dist/css/bootstrap.css'),
+            fonts: [
+                path.join(ROOT_DIR, 'node_modules/font-awesome/fonts/**.*')
+            ],
+            styles: path.join(SRC_DIR, 'styles'),
             html: SRC_DIR
         },
         output: {
             root: DIST_DIR,
             assets: path.join(DIST_DIR, 'assets'),
             scripts: path.join(DIST_DIR, 'scripts'),
+            fonts: path.join(DIST_DIR, 'fonts'),
             styles: path.join(DIST_DIR, 'styles'),
             html: DIST_DIR
         }

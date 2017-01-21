@@ -24,7 +24,7 @@ export default React.createClass({
     render() {
         return (
             <Jumbotron>
-                <h1>Hello from React App Starter!</h1>
+                <h1>Welcome to React App Starter!</h1>
                 <ButtonToolbar>
                     <Button
                         bsStyle="info"

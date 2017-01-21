@@ -1,10 +1,15 @@
+/* eslint-disable global-require, import/no-extraneous-dependencies */
 import path from 'path';
 import fs from 'fs';
 import mkdir from 'mkdirp';
 
-function modules($, env) {
+export default function factory($, env) {
     function getJSONFromCssModules(input, output) {
         return function getJSON(cssFileName, json) {
+            if (path.dirname(cssFileName) !== input) {
+                return;
+            }
+
             const cssName = cssFileName
                                     .replace(input, output)
                                     .replace('.css', '');
@@ -14,10 +19,15 @@ function modules($, env) {
         };
     }
 
-    return $.gulp.src(path.join(env.paths.input.scripts, '/**/*.css'))
+    return function task(done) {
+        return $.gulp.src([
+            path.join(env.paths.input.styles, '/**/*.css'),
+            path.join(env.paths.input.scripts, '/**/*.css')
+        ])
         .pipe($.postcss([
             require('postcss-assets')({
-                relative: true
+                relative: true,
+                loadPaths: [path.join(env.paths.root, 'node_modules')]
             }),
             require('postcss-import'),
             require('postcss-each'),
@@ -29,21 +39,13 @@ function modules($, env) {
             require('autoprefixer')({ browsers: ['last 2 versions'] }),
             require('laggard'),
             require('postcss-modules')({
-                getJSON: getJSONFromCssModules(env.paths.input.scripts, env.paths.output.scripts)
+                getJSON: getJSONFromCssModules(env.paths.input.scripts, env.paths.output.scripts),
+                globalModulePaths: [
+                    env.paths.input.styles,
+                    path.join(env.paths.root, 'node_modules')
+                ]
             })
-        ]));
-}
-
-function global($, env) {
-    return $.gulp.src(env.paths.input.styles);
-}
-
-export default function factory($, env) {
-    return function task(done) {
-        return $.mergeStream(
-            global($, env),
-            modules($, env)
-        )
+        ]))
         .pipe($.if(env.build.minify, $.cssnano()))
         .pipe($.concat('bundle.css'))
         .pipe($.gulp.dest(env.paths.output.styles))

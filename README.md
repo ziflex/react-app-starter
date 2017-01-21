@@ -1,5 +1,5 @@
 # React App Starter
-Starter for your React app.
+> Base for your next React app
 
 ## Installation
 
@@ -40,7 +40,6 @@ gulp build --env production
 * [React Router](https://github.com/ReactTraining/react-router)
 * [Alt](http://alt.js.org/)
 * [React Bootstrap](https://react-bootstrap.github.io/)
-...etc
 
 ## License
 The MIT License (MIT)    

@@ -32,6 +32,7 @@
     "namespaces-js": "1.2.0",
     "observable-mixin": "^1.0.0",
     "react": "15.4.2",
+    "react-addons-pure-render-mixin": "^15.4.2",
     "react-bootstrap": "0.30.7",
     "react-dom": "15.4.2",
     "react-notification-system": "0.2.11",

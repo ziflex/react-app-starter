@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import { Router, Route, IndexRedirect } from 'react-router';
+import { Router, Route, IndexRedirect, Redirect } from 'react-router';
 import Root from './pages/root';
 import Home from './pages/home';
 
@@ -35,6 +35,7 @@ export default React.createClass({
                         component={Home}
                         onEnter={this.props.flux.getRouteHandler('home')}
                     />
+                    <Redirect from="*" to="home" />
                 </Route>
             </Router>
         );

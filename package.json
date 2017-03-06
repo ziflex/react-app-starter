@@ -20,6 +20,7 @@
     "alt-utils": "1.0.0",
     "bluebird": "3.4.7",
     "bootstrap": "3.3.7",
+    "classname": "^0.0.0",
     "classnames": "2.2.5",
     "compose-class": "^1.0.2",
     "date-fns": "1.27.0",

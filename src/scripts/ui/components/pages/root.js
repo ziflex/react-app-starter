@@ -1,8 +1,7 @@
 import React from 'react';
 import AltContainer from 'alt-container';
 import FluxContextMixin from '../mixins/flux-context-mixin';
-import Navbar from './root/navbar';
-import Notifications from './root/notifications';
+import Notifications from './notifications';
 
 export default React.createClass({
     propTypes: {
@@ -17,20 +16,13 @@ export default React.createClass({
     render() {
         return (
             <div>
-                <div>
-                    <Navbar />
-                </div>
-                <div className="container">
-                    {this.props.children}
-                </div>
-                <div>
-                    <AltContainer
-                        stores={{ notifications: this.getStore('notifications') }}
-                        actions={{ actions: this.getActions('notifications') }}
-                    >
-                        <Notifications />
-                    </AltContainer>
-                </div>
+                {this.props.children}
+                <AltContainer
+                    stores={{ notifications: this.getStore('notifications') }}
+                    actions={{ actions: this.getActions('notifications') }}
+                >
+                    <Notifications />
+                </AltContainer>
             </div>
         );
     }

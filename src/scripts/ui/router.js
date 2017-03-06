@@ -8,7 +8,7 @@ const FIELDS = {
 };
 
 const Router = composeClass({
-    consturctor(params) {
+    constructor(params) {
         requires('params', params);
         requires('params.logger', params.logger);
         requires('params.engine', params.engine);
@@ -17,10 +17,18 @@ const Router = composeClass({
         this[FIELDS.engine] = params.engine;
     },
 
-    redirect(path) {
+    navigate(path) {
         requires('path', path);
 
         this[FIELDS.engine].push(path);
+
+        return this;
+    },
+
+    redirect(path) {
+        requires('path', path);
+
+        this[FIELDS.engine].replace(path);
 
         return this;
     },
@@ -32,6 +40,6 @@ const Router = composeClass({
     }
 });
 
-export default function create(...args) {
-    return new Router(...args);
+export default function create(params) {
+    return new Router(params);
 }

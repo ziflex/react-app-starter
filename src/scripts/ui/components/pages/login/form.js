@@ -1,6 +1,10 @@
 import React from 'react';
+import cn from 'classname';
+import { signin as signinCss } from './form.css';
 
 const DEFAULT_ERRORS = [];
+const USERNAME_PATH = ['data', 'username'];
+const IS_DONE_PATH = ['data', 'done'];
 
 export default React.createClass({
     propTypes: {
@@ -10,13 +14,17 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            username: this.props.source.getIn(['data', 'username']),
+            username: this.props.source.getIn(USERNAME_PATH),
             password: ''
         };
     },
 
     _isLoading() {
         return this.props.source.get('isLoading');
+    },
+
+    _isDone() {
+        return this.props.source.getIn(IS_DONE_PATH);
     },
 
     _getErrors() {
@@ -29,7 +37,8 @@ export default React.createClass({
         return [err.message];
     },
 
-    _onSubmit() {
+    _onSubmit(e) {
+        e.preventDefault();
         if (!this._isLoading()) {
             this.props.actions.login(this.state.username, this.state.password);
         }
@@ -51,39 +60,60 @@ export default React.createClass({
         return 'Wait';
     },
 
+    _handleChange(key, value) {
+        this.setState({
+            [key]: value
+        });
+    },
+
     render() {
         const attrs = {};
 
-        if (this._isLoading()) {
+        if (this._isLoading() || this._isDone()) {
             attrs.disabled = true;
         }
 
+        const className = cn({
+            container: true,
+            [signinCss]: true
+        });
+
         return (
-            <form className="form-login" onSubmit={this._onSubmit}>
-                <label htmlFor="inputUsername" className="sr-only">Username</label>
-                <input
-                    type="text"
-                    id="inputUsername"
-                    className="form-control"
-                    placeholder="Username" required=""
-                    autoFocus=""
-                    valueLink={this.linkState('username')}
-                    {...attrs}
-                />
-                <label htmlFor="inputPassword" className="sr-only">Password</label>
-                <input
-                    type="password"
-                    id="inputPassword"
-                    className="form-control"
-                    placeholder="Password"
-                    required=""
-                    valueLink={this.linkState('password')}
-                    {...attrs}
-                />
-                <button className="btn btn-lg btn-primary btn-block" type="submit" {...attrs}>
-                    {this.disabled ? 'Wait...' : 'Login'}
-                </button>
-            </form>
+            <div className={className}>
+                <form onSubmit={this._onSubmit}>
+                    <div
+                        className="form-group"
+                    >
+                        <label htmlFor="inputUsername" className="sr-only">Username</label>
+                        <input
+                            type="text"
+                            id="inputUsername"
+                            className="form-control"
+                            placeholder="Username" required=""
+                            autoFocus=""
+                            onChange={e => this._handleChange('username', e.target.value)}
+                            {...attrs}
+                        />
+                    </div>
+                    <div
+                        className="form-group"
+                    >
+                        <label htmlFor="inputPassword" className="sr-only">Password</label>
+                        <input
+                            type="password"
+                            id="inputPassword"
+                            className="form-control"
+                            placeholder="Password"
+                            required=""
+                            onChange={e => this._handleChange('password', e.target.value)}
+                            {...attrs}
+                        />
+                    </div>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit" {...attrs}>
+                        {this.disabled ? 'Wait...' : 'Login'}
+                    </button>
+                </form>
+            </div>
         );
     }
 });

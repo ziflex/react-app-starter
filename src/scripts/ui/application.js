@@ -28,7 +28,7 @@ class Application extends Alt {
         ], (createLogger, settings) => {
             return Router({
                 logger: createLogger('router'),
-                container: settings.history
+                engine: settings.history
             });
         });
 

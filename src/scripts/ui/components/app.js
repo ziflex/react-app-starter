@@ -3,6 +3,7 @@ import React from 'react';
 import { Router, Route, IndexRedirect, Redirect } from 'react-router';
 import Root from './pages/root';
 import Home from './pages/home';
+import Login from './pages/login/index';
 
 export default React.createClass({
     propTypes: {
@@ -30,6 +31,11 @@ export default React.createClass({
                     component={Root}
                 >
                     <IndexRedirect to="/home" />
+                    <Route
+                        path="login"
+                        component={Login}
+                        onEnter={this.props.flux.getRouteHandler('login')}
+                    />
                     <Route
                         path="home"
                         component={Home}

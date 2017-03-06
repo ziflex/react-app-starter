@@ -1,6 +1,6 @@
 import React from 'react';
 import AltContainer from 'alt-container';
-import FluxContextMixin from '../../mixins/flux-context-mixin';
+import FluxContextMixin from '../mixins/flux-context-mixin';
 import Navbar from './root/navbar';
 import Notifications from './root/notifications';
 

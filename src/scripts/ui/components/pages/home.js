@@ -1,8 +1,8 @@
 import React from 'react';
 import { Jumbotron, ButtonToolbar, Button } from 'react-bootstrap';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import FluxContextMixin from '../../mixins/flux-context-mixin';
-import DynamicEventsMixin from '../../mixins/dynamic-events-mixin';
+import FluxContextMixin from '../mixins/flux-context-mixin';
+import DynamicEventsMixin from '../mixins/dynamic-events-mixin';
 import NotificationLevels from '../../enums/notification-levels';
 
 export default React.createClass({

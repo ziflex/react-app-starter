@@ -28,7 +28,6 @@ export default {
         doc: path.join(ROOT_DIR, 'doc'),
         input: {
             root: SRC_DIR,
-            assets: path.join(SRC_DIR, 'assets'),
             scripts: path.join(SRC_DIR, 'scripts'),
             fonts: [
                 path.join(ROOT_DIR, 'node_modules/font-awesome/fonts/**.*')
@@ -38,7 +37,6 @@ export default {
         },
         output: {
             root: DIST_DIR,
-            assets: path.join(DIST_DIR, 'assets'),
             scripts: path.join(DIST_DIR, 'scripts'),
             fonts: path.join(DIST_DIR, 'fonts'),
             styles: path.join(DIST_DIR, 'styles'),

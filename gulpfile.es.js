@@ -56,7 +56,7 @@ $.gulp.task('build', (done) => {
         [
             'build:scripts',
             'build:styles',
-            'build:assets'
+            'build:fonts'
         ],
         'build:html',
         done

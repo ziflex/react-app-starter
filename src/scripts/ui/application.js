@@ -6,9 +6,12 @@ import {
     Container
 } from '../domain/container';
 import Router from './router';
+import AuthActions from './actions/authentication';
+import AuthStore from './stores/authentication';
 import NotificationsActions from './actions/notifications';
 import NotificationsStore from './stores/notifications';
-import HomeRouteHandler from './routes/home/index';
+import LoginRoute from './routes/login';
+import HomeRoute from './routes/home/index';
 
 const FIELDS = {
     container: Symbol('container')
@@ -29,13 +32,27 @@ class Application extends Alt {
             });
         });
 
+        this.addActions('authentication', [
+            namespaces.domain('authentication')
+        ], AuthActions);
+        this.addStore('authentication', [
+            namespaces.ui.actions('authentication'),
+            namespaces.ui('router')
+        ], AuthStore);
+
         this.addActions('notifications', [], NotificationsActions);
         this.addStore('notifications', [
-            namespaces.ui.actions('notifications')
+            namespaces.ui.actions('notifications'),
+            namespaces.ui('router')
         ], NotificationsStore);
 
+        this.addRouteHandler('login', [
+            namespaces.domain('authentication')
+        ], LoginRoute);
 
-        this.addRouteHandler('home', [], HomeRouteHandler);
+        this.addRouteHandler('home', [
+            namespaces.domain('authentication')
+        ], HomeRoute);
     }
 
     addActions(name, dependencies = [], constructor) {

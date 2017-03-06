@@ -28,6 +28,7 @@
     "react/jsx-indent": [2, 4],
     "react/jsx-indent-props": [2, 4],
     "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
     "lodash/prefer-lodash-method": 0
   }
 }

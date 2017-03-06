@@ -32,7 +32,7 @@
     "namespaces-js": "1.2.0",
     "observable-mixin": "^1.0.0",
     "react": "15.4.2",
-    "react-addons-pure-render-mixin": "^15.4.2",
+    "react-addons-pure-render-mixin": "15.4.2",
     "react-bootstrap": "0.30.7",
     "react-dom": "15.4.2",
     "react-notification-system": "0.2.11",
@@ -50,6 +50,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.3.0",
     "chai": "^3.5.0",
+    "css-modulesify": "^0.27.1",
     "css-mqpacker": "^5.0.1",
     "del": "^2.2.2",
     "env-manager": "^0.2.4",
@@ -82,7 +83,6 @@
     "postcss-each": "^0.9.3",
     "postcss-import": "^9.0.0",
     "postcss-mixins": "^5.4.1",
-    "postcss-modules": "^0.6.2",
     "postcss-nested": "^1.0.0",
     "postcss-reference": "^1.0.3",
     "postcss-simple-vars": "^3.0.0",
@@ -92,12 +92,5 @@
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0",
     "watchify": "^3.8.0"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify"
-      ]
-    ]
   }
 }

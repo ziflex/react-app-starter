@@ -3,10 +3,17 @@ import composeClass from 'compose-class';
 import { requires } from '../../infrastructure/utils/contracts';
 
 export default composeClass({
-    constructor(authSrvc) {
-        requires('auth service', authSrvc);
+    constructor(service) {
+        requires('auth service', service);
 
-        this.authSrvc = authSrvc;
+        this.authSrvc = service;
+
+        this.generateActions(
+            'loginComplete',
+            'loginFail',
+            'logoutComplete',
+            'logoutFail'
+        );
     },
 
     login(username, password) {
@@ -21,14 +28,6 @@ export default composeClass({
         return null;
     },
 
-    loginComplete(username) {
-        return username;
-    },
-
-    loginFail(reason) {
-        return reason;
-    },
-
     logout() {
         this.authSrvc
           .logout()
@@ -36,13 +35,5 @@ export default composeClass({
           .catch(err => this.logoutFail(err));
 
         return this;
-    },
-
-    logoutComplete() {
-        return null;
-    },
-
-    logoutFail(reason) {
-        return reason;
     }
 });

@@ -1,13 +1,11 @@
-export default function create(authentication) {
+import isAuthenticated from './helpers/is-authenticated';
+
+export default function create(authenticationStore) {
     return (nextState, replace, done) => {
-        return authentication.isAuthenticated().then((isAuth) => {
-            if (isAuth) {
-                replace('/home');
-            }
+        if (isAuthenticated(authenticationStore)) {
+            replace('/home');
+        }
 
-            done();
-
-            return null;
-        }).catch(done);
+        done();
     };
 }

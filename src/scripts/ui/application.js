@@ -47,11 +47,11 @@ class Application extends Alt {
         ], NotificationsStore);
 
         this.addRouteHandler('login', [
-            namespaces.domain('authentication')
+            namespaces.ui.stores('authentication')
         ], LoginRoute);
 
         this.addRouteHandler('home', [
-            namespaces.domain('authentication')
+            namespaces.ui.stores('authentication')
         ], HomeRoute);
     }
 

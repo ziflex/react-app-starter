@@ -1,8 +1,7 @@
 import React from 'react';
-import cn from 'classname';
+import cn from 'classnames';
 import { signin as signinCss } from './form.css';
 
-const DEFAULT_ERRORS = [];
 const USERNAME_PATH = ['data', 'username'];
 const IS_DONE_PATH = ['data', 'done'];
 
@@ -31,7 +30,7 @@ export default React.createClass({
         const err = this.props.source.get('error');
 
         if (!err) {
-            return DEFAULT_ERRORS;
+            return null;
         }
 
         return [err.message];

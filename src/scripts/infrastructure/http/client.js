@@ -7,10 +7,12 @@ import forEach from 'lodash/forEach';
 import uuid from 'uuid';
 import EventEmitter from 'eventemitter3';
 import ObservableMixin from 'observable-mixin';
+import urlJoin from 'url-join';
 import HttpEvents from './events';
 
 const FIELDS = {
-    emitter: Symbol('emitter')
+    emitter: Symbol('emitter'),
+    baseEndpoint: Symbol('baseEndpoint')
 };
 
 /**
@@ -26,8 +28,9 @@ const HttpClient = composeClass({
      * Creates new instance of HttpClient.
      * @constructor
      */
-    constructor() {
+    constructor(baseEndpoint = '') {
         this[FIELDS.emitter] = new EventEmitter();
+        this[FIELDS.baseEndpoint] = baseEndpoint;
     },
 
     /**
@@ -55,7 +58,10 @@ const HttpClient = composeClass({
                 return;
             }
 
-            const request = method.call(superagent, options.url);
+            const request = method.call(superagent, urlJoin(
+                this[FIELDS.baseEndpoint],
+                options.url
+            ));
 
             if (options.headers) {
                 forEach(options.headers, (value, key) => request.set(key, value));

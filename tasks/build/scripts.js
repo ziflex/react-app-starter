@@ -20,7 +20,7 @@ export default function factory($, env) {
     b.plugin(require('css-modulesify'), {
         rootDir: env.paths.root,
         output: path.join(env.paths.output.styles, 'components.css'),
-        before: postcssDefaultPlugins()
+        before: postcssDefaultPlugins(env)
     });
 
     function bundle() {

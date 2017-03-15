@@ -1,10 +1,10 @@
 import { Record } from 'immutable';
 
-const AuthenticationModel = Record({
-    done: false,
+const Credentials = Record({
+    authenticated: false,
     username: ''
 });
 
 export default function create(value) {
-    return new AuthenticationModel(value);
+    return new Credentials(value);
 }

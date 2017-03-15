@@ -1,6 +1,5 @@
 import composeClass from 'compose-class';
 import DataSource from '../models/data-source';
-import AuthenticationModel from '../models/authentication';
 import { requires } from '../../infrastructure/utils/contracts';
 
 export default composeClass({
@@ -12,7 +11,7 @@ export default composeClass({
 
         this.router = router;
         this.state = DataSource({
-            data: AuthenticationModel()
+            data: null
         });
     },
 
@@ -20,14 +19,11 @@ export default composeClass({
         this.setState(this.state.set('isLoading', true));
     },
 
-    onLoginComplete(username) {
+    onLoginComplete(credentials) {
         this.setState(DataSource({
             isLoading: false,
             error: null,
-            data: AuthenticationModel({
-                done: true,
-                username
-            })
+            data: credentials
         }));
 
         this.router.navigate('/home');
@@ -40,13 +36,10 @@ export default composeClass({
         }));
     },
 
-    onLogoutComplete() {
+    onLogoutComplete(credentials) {
         this.setState(this.state.merge({
             isLoading: false,
-            data: AuthenticationModel({
-                username: null,
-                done: false
-            })
+            data: credentials
         }));
 
         this.router.navigate('/login');

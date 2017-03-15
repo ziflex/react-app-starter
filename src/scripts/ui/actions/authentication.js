@@ -19,10 +19,7 @@ export default composeClass({
     login(username, password) {
         this.authSrvc
           .login(username, password)
-          .then(() => {
-              this.loginComplete(username);
-              return null;
-          })
+          .then(credentials => this.loginComplete(credentials))
           .catch(err => this.loginFail(err));
 
         return null;

@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 import uuid from 'uuid';
-import NotificationLevel from '../enums/notification-levels';
+import NotificationLevel from './notification-levels';
 
 /**
  * Represents a Notification object

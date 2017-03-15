@@ -4,7 +4,7 @@ import ContainerEngine from 'namespaces-js';
 import { requires } from '../infrastructure/utils/contracts';
 import HttpClient from '../infrastructure/http/client';
 import Logger from '../infrastructure/logging/logger';
-import AuthManager from './auth/manager';
+import AuthenticationService from './authentication/service';
 
 const SEPARATOR = '.';
 const NAMESPACES = ContainerEngine.map({
@@ -49,7 +49,9 @@ const ApplicationConainer = composeClass({
 
         this.register(NAMESPACES.infrastructure.http()).service('client', HttpClient);
 
-        this.register(NAMESPACES.domain()).service('authentication', AuthManager);
+        this.register(NAMESPACES.domain()).service('authentication', [
+            NAMESPACES.infrastructure.http('client')
+        ], AuthenticationService);
     },
 
     createLogger(source) {

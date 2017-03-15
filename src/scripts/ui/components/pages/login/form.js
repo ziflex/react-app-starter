@@ -1,15 +1,20 @@
 import React from 'react';
 import cn from 'classnames';
+import DataSourceMixin from '../../mixins/data-source-mixin';
 import { signin as signinCss } from './form.css';
 
 const USERNAME_PATH = ['data', 'username'];
-const IS_DONE_PATH = ['data', 'done'];
+const IS_DONE_PATH = ['data', 'authenticated'];
 
 export default React.createClass({
     propTypes: {
         source: React.PropTypes.object,
         actions: React.PropTypes.object
     },
+
+    mixins: [
+        DataSourceMixin
+    ],
 
     getInitialState() {
         return {
@@ -18,33 +23,19 @@ export default React.createClass({
         };
     },
 
-    _isLoading() {
-        return this.props.source.get('isLoading');
-    },
-
     _isDone() {
         return this.props.source.getIn(IS_DONE_PATH);
     },
 
-    _getErrors() {
-        const err = this.props.source.get('error');
-
-        if (!err) {
-            return null;
-        }
-
-        return [err.message];
-    },
-
     _onSubmit(e) {
         e.preventDefault();
-        if (!this._isLoading()) {
+        if (!this.isLoading()) {
             this.props.actions.login(this.state.username, this.state.password);
         }
     },
 
     _renderLoader() {
-        if (this._isLoading()) {
+        if (this.isLoading()) {
             return 'Wait...';
         }
 
@@ -52,7 +43,7 @@ export default React.createClass({
     },
 
     _btnLabel() {
-        if (!this._isLoading()) {
+        if (!this.isLoading()) {
             return 'Login';
         }
 
@@ -68,7 +59,7 @@ export default React.createClass({
     render() {
         const attrs = {};
 
-        if (this._isLoading() || this._isDone()) {
+        if (this.isLoading() || this._isDone()) {
             attrs.disabled = true;
         }
 

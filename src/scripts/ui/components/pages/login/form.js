@@ -74,13 +74,18 @@ export default React.createClass({
                     <div
                         className="form-group"
                     >
-                        <label htmlFor="inputUsername" className="sr-only">Username</label>
+                        <label
+                            htmlFor="inputUsername"
+                            className="sr-only"
+                        >
+                            Username
+                        </label>
                         <input
                             type="text"
                             id="inputUsername"
                             className="form-control"
-                            placeholder="Username" required=""
-                            autoFocus=""
+                            placeholder="Username"
+                            required=""
                             onChange={e => this._handleChange('username', e.target.value)}
                             {...attrs}
                         />
@@ -88,7 +93,12 @@ export default React.createClass({
                     <div
                         className="form-group"
                     >
-                        <label htmlFor="inputPassword" className="sr-only">Password</label>
+                        <label
+                            htmlFor="inputPassword"
+                            className="sr-only"
+                        >
+                            Password
+                        </label>
                         <input
                             type="password"
                             id="inputPassword"

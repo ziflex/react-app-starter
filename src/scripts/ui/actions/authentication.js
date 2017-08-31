@@ -18,18 +18,18 @@ export default composeClass({
 
     login(username, password) {
         this.authSrvc
-          .login(username, password)
-          .then(credentials => this.loginComplete(credentials))
-          .catch(err => this.loginFail(err));
+            .login(username, password)
+            .then(credentials => this.loginComplete(credentials))
+            .catch(err => this.loginFail(err));
 
         return null;
     },
 
     logout() {
         this.authSrvc
-          .logout()
-          .then(() => this.logoutComplete())
-          .catch(err => this.logoutFail(err));
+            .logout()
+            .then(() => this.logoutComplete())
+            .catch(err => this.logoutFail(err));
 
         return this;
     }

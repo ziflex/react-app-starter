@@ -37,25 +37,25 @@ export default React.createClass({
                                 onClick={this._onInfoClick}
                             >
                               Click me
-                          </Button>
+                            </Button>
                             <Button
                                 bsStyle="success"
                                 onClick={this._onSuccessClick}
                             >
                               Click me
-                          </Button>
+                            </Button>
                             <Button
                                 bsStyle="warning"
                                 onClick={this._onWarningClick}
                             >
                               Click me
-                          </Button>
+                            </Button>
                             <Button
                                 bsStyle="danger"
                                 onClick={this._onErrorClick}
                             >
                               Click me
-                          </Button>
+                            </Button>
                         </ButtonToolbar>
                     </Jumbotron>
                 </div>

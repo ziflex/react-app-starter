@@ -7,7 +7,7 @@ export default function factory($, env) {
             .pipe($.mocha({
                 reporter: env.test.report || 'spec',
                 recursive: true,
-                port: env.test.port
+                compilers: 'js:babel-core/register'
             }));
     };
 }

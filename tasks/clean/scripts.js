@@ -1,5 +1,5 @@
 export default function factory($, env) {
     return function task(done) {
-        return $.delete([env.paths.output.scripts + '/**/*.js'], done);
+        return $.delete([`${env.paths.output.scripts}/**/*.js`], done);
     };
 }

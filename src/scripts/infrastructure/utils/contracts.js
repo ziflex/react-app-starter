@@ -1,6 +1,6 @@
 import isNil from 'lodash/isNil';
 
- /**
+/**
   * Checks for a condition; if the condition is false,
   * follows the escalation policy set for the analyzer.
   * @param {string} message - A message to display if the condition is not met..
@@ -12,7 +12,7 @@ export function assert(message, condition) {
     }
 }
 
- /**
+/**
   * Specifies a precondition contract for the enclosing method or property,
   * and displays a message if the condition for the contract fails.
   * @param {string} name - The method / property name to display if the condition is false.

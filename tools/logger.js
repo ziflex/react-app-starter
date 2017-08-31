@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies, class-methods-use-this */
 import gutil from 'gulp-util';
 
 class Logger {

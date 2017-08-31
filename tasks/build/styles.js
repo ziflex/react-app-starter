@@ -7,10 +7,10 @@ export default function factory($, env) {
         return $.gulp.src([
             path.join(env.paths.input.styles, '/**/*.css')
         ])
-        .pipe($.postcss(postcssDefaultPlugins(env)))
-        .pipe($.if(env.build.minify, $.cssnano()))
-        .pipe($.concat('global.css'))
-        .pipe($.gulp.dest(env.paths.output.styles))
-        .on('error', done);
+            .pipe($.postcss(postcssDefaultPlugins(env)))
+            .pipe($.if(env.build.minify, $.cssnano()))
+            .pipe($.concat('global.css'))
+            .pipe($.gulp.dest(env.paths.output.styles))
+            .on('error', done);
     };
 }

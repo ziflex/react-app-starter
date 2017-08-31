@@ -1,9 +1,9 @@
 export default function factory($, env) {
     return function task() {
-        const target = $.gulp.src(env.paths.input.html + '/index.html');
+        const target = $.gulp.src(`${env.paths.input.html}/index.html`);
         const sources = $.gulp.src([
-            env.paths.output.scripts + '/**/*.js',
-            env.paths.output.styles + '/**/*.css'
+            `${env.paths.output.scripts}/**/*.js`,
+            `${env.paths.output.styles}/**/*.css`
         ], { read: false });
 
         return target
